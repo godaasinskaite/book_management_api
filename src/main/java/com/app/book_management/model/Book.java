@@ -1,0 +1,52 @@
+package com.app.book_management.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "Book title can not be blank")
+    private String title;
+
+    @NotBlank(message = "Book description can not be blank")
+    private String description;
+
+    @Pattern(regexp = "(?=(?:[^0-9]*[0-9]){10}(?:(?:[^0-9]*[0-9]){3})?$)[\\\\d-]+$", message = "Invalid ISBN number")
+    private String isbn;
+
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
+
+    @NotBlank(message = "Book author can not be blank")
+    private String author;
+
+    @PastOrPresent(message = "Book year can not be in the future")
+    private LocalDate year;
+
+    @DecimalMin(value = "0.0", inclusive = false, message = "Book price must be greater than 0")
+    private Double price;
+
+    @ElementCollection
+    @CollectionTable(name = "book_ratings", joinColumns = @JoinColumn(name = "book_id"))
+    @Column(name = "rating")
+    @Min(value = 1, message = "Book rating must be at least 1")
+    @Max(value = 5, message = "Book rating must not exceed 5")
+    private List<@Min(1) @Max(5) Integer> ratings = new ArrayList<>();
+}
