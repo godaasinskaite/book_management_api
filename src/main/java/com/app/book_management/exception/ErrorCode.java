@@ -12,8 +12,7 @@ public enum ErrorCode {
     BOOK_LIST_IS_NULL(HttpStatus.CONFLICT),
     INVALID_AUTHOR_EXCEPTION(HttpStatus.BAD_REQUEST),
     INVALID_PRICE_EXCEPTION(HttpStatus.BAD_REQUEST),
-    INVALID_BOOK_YEAR_EXCEPTION(HttpStatus.BAD_REQUEST)
-    ;
+    INVALID_BOOK_YEAR_EXCEPTION(HttpStatus.BAD_REQUEST);
 
     private final HttpStatus httpStatus;
 

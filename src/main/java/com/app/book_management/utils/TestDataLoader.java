@@ -17,6 +17,7 @@ import java.util.List;
 public class TestDataLoader implements CommandLineRunner {
 
     private final BookRepository bookRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Book book1 = Book.builder()
@@ -26,7 +27,7 @@ public class TestDataLoader implements CommandLineRunner {
                 .genre(Genre.FANTASY)
                 .year(Year.of(2000))
                 .price(21.99)
-                .ratings(List.of(3,5,5,2,4,5,5))
+                .ratings(List.of(3, 5, 5, 2, 4, 5, 5))
                 .build();
 
         Book book2 = Book.builder()

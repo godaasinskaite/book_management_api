@@ -83,7 +83,7 @@ public class BookService {
 
         final List<Book> books = findAllBooks();
         final List<Book> filteredBooks = books.stream()
-                .filter(book -> book.getAuthor().equals(author))
+                .filter(book -> book.getAuthor().equalsIgnoreCase(author))
                 .collect(Collectors.toList());
         log.info(filteredBooks.size() + " books were found with author = " + author);
         return mapToResponseAndCalculateOverallRatings(filteredBooks);
@@ -104,11 +104,11 @@ public class BookService {
 
     public List<BookResponseDto> filterByTitle(final String title) throws ApplicationException {
         bookValidator.validateStringFilter(title);
-        log.info("Given keyword validated");
+        log.info("Given title validated");
 
         final List<Book> books = findAllBooks();
         List<Book> filteredBooks = books.stream()
-                .filter(book -> Objects.equals(book.getTitle(), title))
+                .filter(book -> book.getTitle().equalsIgnoreCase(title))
                 .collect(Collectors.toList());
         log.info(filteredBooks.size() + " books were found with title = " + title);
         return mapToResponseAndCalculateOverallRatings(filteredBooks);
@@ -116,6 +116,7 @@ public class BookService {
 
     public List<BookResponseDto> filterInPriceRange(final Double minPrice, final Double maxPrice) throws ApplicationException {
         bookValidator.validatePriceRange(minPrice, maxPrice);
+        log.info("Given prices validated");
         final List<Book> books = findAllBooks();
         final List<Book> filteredBooks = books.stream()
                 .filter(book -> book.getPrice() >= minPrice && book.getPrice() <= maxPrice)
@@ -126,6 +127,7 @@ public class BookService {
 
     public List<BookResponseDto> filterByYear(final Year year) throws ApplicationException {
         bookValidator.validateBookYear(year);
+        log.info("Given year validated");
         final List<Book> books = findAllBooks();
         final List<Book> filteredBooks = books.stream()
                 .filter(book -> book.getYear().equals(year))
@@ -142,6 +144,7 @@ public class BookService {
 
     public void rateBook(final Long bookId, final Integer rating) throws ApplicationException {
         bookValidator.validateBookRating(rating);
+        log.info("Given rating validated");
         final Book book = findBookById(bookId);
         book.getRatings().add(rating);
         bookRepository.save(book);
@@ -150,6 +153,7 @@ public class BookService {
 
     public List<BookResponseDto> filterBooksByRatings(final Integer rating) throws ApplicationException {
         bookValidator.validateBookRating(rating);
+        log.info("Given rating validated");
         final List<Book> books = bookRepository.findBooksByAverageRating(rating);
         log.info(books.size() + " books were found with rating = " + rating);
         return mapToResponseAndCalculateOverallRatings(books);
