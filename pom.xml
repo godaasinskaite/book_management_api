@@ -84,6 +84,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>Book-Management</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
