@@ -7,10 +7,22 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 
+/**
+ * Global exception handler for the application.
+ * This class provides a centralized way to manage application-specific exceptions
+ * and format the error responses returned to the client.
+ */
 @RestControllerAdvice
 @Slf4j
 public class ControllerAdvice {
 
+    /**
+     * Handles ApplicationException and returns a structured error response.
+     *
+     * @param e the ApplicationException that was thrown.
+     * @return a ResponseEntity containing the error response and the
+     *         corresponding HTTP status code.
+     */
     @ExceptionHandler(ApplicationException.class)
     public ResponseEntity<ErrorResponse> handleApplicationException(ApplicationException e) {
         ErrorResponse errorResponse = ErrorResponse.builder()

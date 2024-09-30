@@ -7,6 +7,9 @@ import lombok.Data;
 
 import java.time.Year;
 
+/**
+ * Data Transfer Object class for obtaining information about new book entity.
+ */
 @Data
 @Builder
 public class BookRequestDto {

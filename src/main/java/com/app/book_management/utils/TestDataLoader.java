@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.time.Year;
 import java.util.List;
 
+/**
+ * A component to create and save application test data.
+ */
 @Component
 @RequiredArgsConstructor
 @Slf4j

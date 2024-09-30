@@ -3,6 +3,10 @@ package com.app.book_management.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+/**
+ * Enum representing various error codes.
+ * Defines a set of constants that represents specific errors.
+ */
 @Getter
 public enum ErrorCode {
     BOOK_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND),
@@ -16,6 +20,11 @@ public enum ErrorCode {
 
     private final HttpStatus httpStatus;
 
+    /**
+     * Constructs a new ErrorCode with the specified HTTP status.
+     *
+     * @param httpStatus the HttpStatus associated with this error code.
+     */
     ErrorCode(HttpStatus httpStatus) {
         this.httpStatus = httpStatus;
     }

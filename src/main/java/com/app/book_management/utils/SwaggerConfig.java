@@ -4,6 +4,12 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * OpenAPIs configuration class for setting up API documentation.
+ * Allows easy exploration and testing of this book management API.
+ *
+ *  * <a href="http://localhost:8080/swagger-ui.html">Swagger UI</a>.
+ */
 @Configuration
 public class SwaggerConfig {
 

@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.time.Year;
 
+/**
+ * Data Transfer Object class for representing book information in responses.
+ */
 @Data
 @Builder
 public class BookResponseDto {

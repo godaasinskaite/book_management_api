@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "book")
 public class Book {
 
     @Id
@@ -30,8 +31,8 @@ public class Book {
     @NotNull
     private String description;
 
-    @Enumerated(EnumType.STRING)
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 
     @NotBlank(message = "Book author can not be blank")
@@ -49,5 +50,6 @@ public class Book {
     @ElementCollection
     @CollectionTable(name = "book_ratings", joinColumns = @JoinColumn(name = "book_id"))
     @Column(name = "rating")
+    @Builder.Default
     private List<@Min(1) @Max(5) Integer> ratings = new ArrayList<>();
 }

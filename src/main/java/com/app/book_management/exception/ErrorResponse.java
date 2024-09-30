@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * Class that represents a structured response for application errors.
+ */
 @Data
 @Builder
 public class ErrorResponse {
