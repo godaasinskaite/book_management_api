@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.Year;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,7 +67,7 @@ public class BookService {
         return mapToResponseAndCalculateOverallRatings(books);
     }
 
-    private List<BookResponseDto> mapToResponseAndCalculateOverallRatings(final List<Book> books) throws ApplicationException {
+    public List<BookResponseDto> mapToResponseAndCalculateOverallRatings(final List<Book> books) throws ApplicationException {
         bookValidator.validateBookList(books);
         final List<BookResponseDto> mappedBooks = bookMapper.booksToBookResponseDtos(books);
         setOverallRatings(mappedBooks, books);
